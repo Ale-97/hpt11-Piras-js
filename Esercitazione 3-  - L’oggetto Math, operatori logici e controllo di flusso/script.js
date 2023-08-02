@@ -52,10 +52,10 @@ console.log(temperatureResult());
 
 // ESERCIZIO 4
 
-let year=1700;
+let year = 1700;
 
-if ((year%4)<1 || (year%400)<1 ){
+if ((year % 4) < 1 || (year % 400) < 1) {
     console.log("anno bisestile");
-} else{
+} else {
     console.log("anno non bisestile");
 }
