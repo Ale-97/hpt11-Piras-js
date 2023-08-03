@@ -112,7 +112,7 @@ const game = (stingA, stringB) => {
     let pointB = 0;
     stirngCheckA.forEach(elementA => {
         pointA = pointA + (alfabeto.indexOf(elementA) + 1)
-        F
+         
     });
     stirngCheckB.forEach(elementB => {
         pointB = pointB + (alfabeto.indexOf(elementB) + 1)
