@@ -2,13 +2,13 @@
 
 let arrayNumbers = [4, -8, 2, 6, 7, 9, 0, -3, -9, 3];
 const cresc = (arrayCre) => {
-    console.log(arrayCre.sort((a, b) => { return a - b; }));
+    return arrayCre.sort((a, b) => { return a - b; });
 };
 const decr = (arrayDecr) => {
-    console.log(arrayDecr.sort((a, b) => { return b - a; }));;
+   return arrayDecr.sort((a, b) => { return b - a; });
 };
-cresc(arrayNumbers);
-decr(arrayNumbers);
+console.log(cresc(arrayNumbers));
+console.log(decr(arrayNumbers));
 
 
 // ---------- TRACCIA 2 ----------
@@ -36,10 +36,11 @@ console.log(checkPalindrom("nove"));
 
 // ---------- TRACCIA 4 ----------
 
-let maxNumber = Math.max(...arrayNumbers);
+let listaDate=cresc(arrayNumbers);
+console.log(listaDate[(listaDate.length-1)],listaDate[listaDate.length-2] )
 
-arrayNumbers.splice(arrayNumbers.indexOf(maxNumber), 1);
-
-let secondMaxNumber=Math.max(...arrayNumbers);
-
-console.log(maxNumber, secondMaxNumber);
+// SOLUZIONE USANDO Math.MAX
+// let maxNumber = Math.max(...arrayNumbers);
+// arrayNumbers.splice(arrayNumbers.indexOf(maxNumber), 1);
+// let secondMaxNumber=Math.max(...arrayNumbers);
+// console.log(maxNumber, secondMaxNumber);
