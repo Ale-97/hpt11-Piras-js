@@ -35,9 +35,12 @@ console.log(checkPalindrom("nove"));
 
 
 // ---------- TRACCIA 4 ----------
+const firstSecondMaxAge=(listaDate)=>{
+    let listaDateCresc=cresc(listaDate);
+    return [listaDateCresc[(listaDateCresc.length-1)],listaDateCresc[listaDateCresc.length-2]]
+}
 
-let listaDate=cresc(arrayNumbers);
-console.log(listaDate[(listaDate.length-1)],listaDate[listaDate.length-2] )
+console.log(`${firstSecondMaxAge(arrayNumbers)}`)
 
 // SOLUZIONE USANDO Math.MAX
 // let maxNumber = Math.max(...arrayNumbers);
