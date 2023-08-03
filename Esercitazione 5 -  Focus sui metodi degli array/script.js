@@ -35,6 +35,7 @@ console.log(checkPalindrom("nove"));
 
 
 // ---------- TRACCIA 4 ----------
+
 const firstSecondMaxAge=(listaDate)=>{
     let listaDateCresc=cresc(listaDate);
     return [listaDateCresc[(listaDateCresc.length-1)],listaDateCresc[listaDateCresc.length-2]]
