@@ -1,7 +1,9 @@
 const printTheValueArrayObject = (array, key) => {
+
     array.forEach(e => {
         console.log(e[key]);
     });
+
 };
 
 
@@ -79,16 +81,19 @@ const addStudent = (nameNewStudent, ageNewStudent, voteNewStudent) => {// Funzio
         vote: voteNewStudent,
     });
 };
+
 addStudent("Paola", 12, 9);
+
 console.log("");
 console.log("");
 console.log("Lista Studenti:");
 console.log("");
+
 printTheValueArrayObject(classOfStudents, "name")
 
 const average = (array) => {
     let sumVote = 0;
-    array.forEach(student => { sumVote = sumVote + student.vote; })
+    array.forEach(student => { sumVote +=student.vote; })
     return sumVote / array.length;
 };
 console.log(`La media dei voti della classe è : ${average(classOfStudents)}`)
