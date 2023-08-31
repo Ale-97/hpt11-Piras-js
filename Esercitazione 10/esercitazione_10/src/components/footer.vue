@@ -1,5 +1,5 @@
 <template>
-    <div id="footer" class="container">
+    <div id="footer">
 
     </div>
   </template>
