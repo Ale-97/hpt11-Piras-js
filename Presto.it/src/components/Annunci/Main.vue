@@ -1,7 +1,6 @@
 <template>
   <div class="Main">
     <div id="bgP"></div>
-    <div class="col-12">
       <div class="row justify-content-center">
         <div class="col-10">
           <div class="row justify-content-center">
@@ -84,7 +83,6 @@
           :type="annuncio.type"
         />
       </div>
-    </div>
   </div>
 </template>
 

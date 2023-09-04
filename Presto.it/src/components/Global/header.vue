@@ -1,6 +1,6 @@
   <template>
   <div id="header" class="contrainer-fluid">
-    <nav class="row justify-content-center">
+    <nav class="row justify-content-center fixed-top" id="navbarA">
       <div class="col-12">
         <div class="row d-flex align-items-center justify-content-between">
           <div class="col-2">
@@ -10,7 +10,7 @@
             </div>
           </div>
           <div class="col-7">
-            <ul class="row  justify-content-between align-items-center">
+            <ul class="row justify-content-end align-items-center">
               <li class="col-2">
                 <router-link to="/">
                   <span v-if="focus() != ''">Home</span>
@@ -35,7 +35,7 @@
                   <span v-else class="focus">Profilo</span>
                 </router-link>
               </li>
-              <li class="col-3">
+              <li class="col-2">
                 <router-link to="/Articoli">Crea Annunci</router-link>
               </li>
             </ul>
@@ -49,30 +49,46 @@
   <script>
 export default {
   name: "header",
+  mounted() {
+    this.navbar();
+  },
   methods: {
     focus() {
       const currentPage = window.location.hash.split("/");
       return currentPage[currentPage.length - 1];
     },
-
+    navbar() {
+      window.addEventListener("scroll", () => {
+        if (window.scrollY == 0) {
+          document.getElementById("navbarB").id = "navbarA";
+        } else {
+          document.getElementById("navbarA").id = "navbarB";
+        }
+      });
+    },
   },
 };
 </script>
   
   <style lang="scss">
-#header {
-  @media screen and (min-width: 992px) {
-   nav{
-    margin: 40px 100px 0;
-   } 
+@media screen and (min-width: 992px) {
+  #navbarA {
+    margin: 40px 300px 0;
+    box-shadow: 0 5px 5px 5px rgb(232, 232, 232);
   }
+}
+#navbarB {
+  margin: 0;
+}
+#header {
+  padding-top: 150px;
   nav {
-    margin: 20px 0;
-    padding: 0 20px;
-    margin: 50px 0;
-    .col-8{
+    overflow: hidden;
+    background-color: white;
+    margin-bottom: 20px;
+    transition: all 1s;
+    .col-12 {
       padding: 15px 20px;
-      box-shadow:0 5px 5px 5px rgb(232, 232, 232) ;
     }
     .focus {
       color: rgb(0, 185, 142);

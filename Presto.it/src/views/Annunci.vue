@@ -1,6 +1,6 @@
 <template>
   <div id="Annunci">
-    <div class="container-fluid">
+    <div>
       <Main :elementList="elementList" @search="filterList" @order="orderList" class="row" />
     </div>
   </div>
