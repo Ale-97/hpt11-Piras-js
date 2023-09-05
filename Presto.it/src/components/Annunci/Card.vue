@@ -44,7 +44,7 @@ export default {
 <style lang="scss" scoped>
 .container-card {
   box-shadow: 10px 10px 10px 10px #dedede;
-  width: 80%;
+  width: 350px;
   border-radius: 20px;
   #containerTopCard{
     position: relative;

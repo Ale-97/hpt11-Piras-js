@@ -1,10 +1,10 @@
 <template>
   <div class="Section3 container-fluid">
     <div class="row justify-content-center align-items-center">
-      <div class="col-4 d-flex justify-content-center">
+      <div class="col-4 d-flex justify-content-center d-none d-sm-block">
         <div></div>
       </div>
-      <div class="col-4">
+      <div class="col-12 col-sm-6 text-center text-sm-start">
         <h2>Lavora <span>con noi</span></h2>
         <div>Invia la tua candidatura per far parte del team di Presto</div>
         <div class="d-flex flex-column">
@@ -50,7 +50,7 @@ export default {
       background-size: cover;
     }
   }
-  .col-4:last-of-type {
+  .col-12,.col-sm-6 {
     .d-flex {
       margin-top: 50px;
       input,

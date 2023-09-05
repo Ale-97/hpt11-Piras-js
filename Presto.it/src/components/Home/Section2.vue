@@ -10,8 +10,8 @@
         </div>
       </div>
     </div>
-    <div class="row g-4">
-      <div class="col-3">
+    <div class="row g-4 justify-content-lg-center">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <div>
           <div>
             <span><i class="fas fa-car-alt"></i></span>
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <div>
           <div>
             <span><i class="fas fa-laptop"></i></span>
@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <div>
           <div>
             <span><i class="fas fa-motorcycle"></i></span>
@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <div>
           <div>
             <span><i class="fas fa-tshirt"></i></span>
@@ -47,7 +47,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <div>
           <div>
             <span><i class="fas fa-running"></i></span>
@@ -56,7 +56,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <div>
           <div>
             <span><i class="fas fa-leaf"></i></span>
@@ -65,7 +65,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <div>
           <div>
             <span><i class="fas fa-home"></i></span>
@@ -74,7 +74,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <div>
           <div>
             <span><i class="fas fa-bacon"></i></span>
@@ -103,7 +103,7 @@ export default {
   text-align: center;
   margin-bottom: 50px;
 }
-.col-3 {
+.col-12,.col-sm-6,.col-lg-4,.col-xl-3 {
   div:first-child {
     background-color: rgb(250, 250, 250);
     padding: 20px;

@@ -1,7 +1,7 @@
 <template>
-  <div id="Annunci">
+  <div id="Annunci" >
     <div>
-      <Main :elementList="elementList" @search="filterList" @order="orderList" class="row" />
+      <Main :elementList="elementList" @search="filterList" @order="orderList"/>
     </div>
   </div>
 </template>

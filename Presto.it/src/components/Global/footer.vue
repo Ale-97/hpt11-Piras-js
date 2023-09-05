@@ -1,7 +1,7 @@
 <template>
   <div id="footer" class="contrainer-fluid">
     <div class="row justify-content-center">
-      <div class="col-2">
+      <div class="col-12 col-sm columnFooter">
         <span>
           <h5>Get in touch</h5>
           <div>
@@ -18,7 +18,7 @@
         </span>
       </div>
 
-      <div class="col-2">
+      <div class="col-12 col-sm columnFooter">
         <span>
           <h5>Quick Links</h5>
           <div><a href="">About Us</a></div>
@@ -29,13 +29,13 @@
         </span>
       </div>
 
-      <div class="col-2" id="newsletter">
+      <div class="col-12 col-sm columnFooter" id="newsletter">
         <span>
           <h5>Newsletter</h5>
           <div>Dolor amet sit justo amet elitr clita ipsum elitr est</div>
-          <div>
-            <input type="text" placeholder="Your email" />
-            <button id="bFooter">SIGNUP</button>
+          <div class="row">
+            <input class="col-12 col-lg-8 py-3 py-lg-0" type="text" placeholder="Your email" />
+            <button class="col-12 col-lg-4 ">SIGNUP</button>
           </div>
         </span>
       </div>
@@ -61,7 +61,7 @@ export default {
   padding: 80px 0 10px 0;
   color: rgb(144, 146, 148);
   background-color: rgb(33, 37, 41);
-  .col-2 {
+  .columnFooter,.col-sm {
     display: flex;
     justify-content: center;
     div {
@@ -86,12 +86,10 @@ export default {
       border-radius: 10px;
       padding: 6px;
       input {
-        margin-left: 10px;
         background-color: rgba($color: #000000, $alpha: 0);
-        border: none;
+        border: none; color: white;
       }
       button {
-        width: 80px;
         border-radius: 5px;
         padding: 8px;
       }

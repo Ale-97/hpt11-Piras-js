@@ -1,8 +1,13 @@
 <template>
   <div class="Section1 container">
     <div class="row">
+      <div class="col-12 col-lg-6 order-1 d-flex flex-column justify-content-center px-5" id="img">
+        <span @click="left()"><i class="fas fa-chevron-left"></i></span>
+        <span @click="right()"><i class="fas fa-chevron-right"></i></span>
+      </div>
       <div
-        class="col-6 d-flex flex-column align-items-start justify-content-evenly"
+        class="col-12 col-lg-6 order-0 d-flex flex-column mb-5 mb-lg-0
+         align-items-lg-start align-items-center justify-content-evenly text-center text-lg-start "
       >
         <h1>Trova i <span>migliori affari</span> nella tua citta</h1>
         <p>
@@ -13,10 +18,7 @@
         </p>
         <button>INIZIA ORA</button>
       </div>
-      <div class="col-6 d-flex flex-column justify-content-center" id="img">
-        <span @click="left()"><i class="fas fa-chevron-left"></i></span>
-        <span @click="right()"><i class="fas fa-chevron-right"></i></span>
-      </div>
+
     </div>
   </div>
 </template>

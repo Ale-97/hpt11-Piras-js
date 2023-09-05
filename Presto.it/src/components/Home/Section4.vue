@@ -11,9 +11,9 @@
       </div>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center g-5">
       <Card
-        class="col-3 m-5"
+        class="col-12 col-md-6 col-lg-5 col-xl-4  d-flex  justify-content-center"
         v-for="annuncio in arrayElement(6)"
         :key="annuncio.id"
         :name="annuncio.name"
