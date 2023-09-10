@@ -1,9 +1,9 @@
 <template>
-  <div class="Section1 container">
+  <div id="Section1" class="container">
     <div class="row">
-      <div class="col-12 col-lg-6 order-1 d-flex flex-column justify-content-center px-5" id="img">
-        <span @click="left()"><i class="fas fa-chevron-left"></i></span>
-        <span @click="right()"><i class="fas fa-chevron-right"></i></span>
+      <div class="col-12 col-lg-6 order-1">
+        <Slider
+      :ListImg="listimg"/>
       </div>
       <div
         class="col-12 col-lg-6 order-0 d-flex flex-column mb-5 mb-lg-0
@@ -24,9 +24,12 @@
 </template>
 
 <script>
+import Slider from "../Global/SliderImg.vue"
 export default {
   name: "Section1",
-  components: {},
+  components: {
+    Slider,
+  },
   data() {
     return {
       listimg: [
@@ -65,28 +68,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#Section1{
+  padding-top: 200px;
 h1 {
   font-size: 80px;
   span {
     color: rgb(0, 185, 142);
   }
 }
-#img {
-  background-image: url(https://picsum.photos/id/237/400/600);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 600px;
-  transition: all 0.5s;
-}
-i {
-  padding: 23px;
-  background-color: rgb(0, 185, 142);
-  border-radius: 50%;
-  display: inline-block;
-  margin: 10px;
-  margin-left:-40px;
-  color: white;
-  font-weight: bold;
 }
 </style>

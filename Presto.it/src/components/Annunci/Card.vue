@@ -1,7 +1,9 @@
 <template>
   <div class="Card">
+    <router-link :to="urlProduct">
     <div class="container-card">
       <!--Immagine di sfondo della card  -->
+
       <div id="containerTopCard">
         <span id="type">{{ this.type }}</span>
         <div :id="this.category" class="containerBg">     
@@ -20,6 +22,7 @@
         </div>
       </div>
     </div>
+  </router-link>
   </div>
 </template>
 
@@ -28,10 +31,12 @@ export default {
   name: "Card",
   data() {
     return {
+      urlProduct:`/Annunci/${this.id-1}`
     };
   },
 
   props: {
+    id:Number,
     name: String,
     category: String,
     price: String,

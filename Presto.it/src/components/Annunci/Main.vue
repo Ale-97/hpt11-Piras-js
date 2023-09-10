@@ -1,5 +1,5 @@
 <template>
-  <div class="Main">
+  <main class="Main">
     <div id="bgP" class="row">
       <div class="col d-flex align-items-center justify-content-center">
               <h1>Cerca tra i nostri <span>Annunci</span></h1>
@@ -105,7 +105,7 @@
         </ul>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -165,8 +165,8 @@ export default {
 <style lang="scss" scoped>
 .Main {
   #bgP {
-    height: 300px;
-    background-image: url(../../assets/bg-Header.jpg);
+    height: 400px;
+    background-image: url(../../assets/section3.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

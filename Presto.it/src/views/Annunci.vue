@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Main from "../components/Annunci/Main.vue";
-import annunci from "../annunci.json";
+import Main from "@/components/Annunci/Main.vue";
+import annunci from "@/annunci.json";
 export default {
   name: "Annunci",
   components: {

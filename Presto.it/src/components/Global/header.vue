@@ -1,5 +1,5 @@
   <template>
-  <div id="header" class="contrainer-fluid">
+  <span id="header">
     <nav class="navbar navbar-expand-lg bg-light fixed-top" id="navbarA">
       <div class="container-fluid">
         <div class="d-flex">
@@ -107,7 +107,7 @@
         </div>
       </div>
     </nav>
-  </div>
+  </span>
 </template>
   
   <script>
@@ -138,7 +138,6 @@ export default {
 @media screen and (min-width: 1300px) {
   #navbarA {
     margin: 40px 300px 0;
-    box-shadow: 0 5px 5px 5px rgb(232, 232, 232);
   }
 }
 #navbarB {
