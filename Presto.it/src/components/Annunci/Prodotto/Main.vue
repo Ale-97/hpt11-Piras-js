@@ -1,8 +1,8 @@
 <template>
   <main id="Main" class="container">
     <div class="row">
-      <div class="col-6"><SliderImg :ListImg="listimg" /></div>
-      <div class="col-6">
+      <div class="col-12 col-lg-6 "><SliderImg :ListImg="listimg" /></div>
+      <div class="col-12 col-lg-6" id="rightElemnt">
         <div class="d-flex justify-content-between align-items-center">
           <span>{{ product.category }}</span>
           <i class="far fa-heart" @click="favorites"></i>
@@ -110,7 +110,7 @@ this.startTop();
 <style lang="scss" scoped>
 #Main {
 padding-top: 200px;
-  .col-6:last-of-type {
+  #rightElemnt {
     > div:first-child {
       border-bottom: 1px solid black;
       padding: 20px 0;
