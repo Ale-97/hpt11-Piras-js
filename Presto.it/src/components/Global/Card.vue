@@ -1,5 +1,5 @@
 <template>
-  <div class="Card">
+  <div id="Card">
     <router-link :to="urlProduct">
     <div class="container-card">
       <!--Immagine di sfondo della card  -->
@@ -56,7 +56,7 @@ export default {
     overflow: hidden;
     border-radius: 20px 20px 0 0;
         #type {
-      background-color:rgb(0, 185, 142);
+      background-color:var(--green);
       color: white;
       padding: 3px 15px;
       border-radius: 10px;
@@ -89,22 +89,22 @@ export default {
   .container {
     padding: 10px 14px 0 14px;
     h2 {
-      color: rgb(0, 185, 142);
+      color: var(--green);
     }
     h5 {
       color: rgb(28, 38, 85);
     }
     .row {
-      border-top: 1px Dashed rgb(0, 185, 142);
+      border-top: 1px Dashed var(--green);
       .col-6:first-of-type {
-        border-right: 1px Dashed rgb(0, 185, 142);
+        border-right: 1px Dashed var(--green);
       }
       .col-6 {
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 5px;
-        color: rgb(0, 185, 142);
+        color: var(--green);
         font-weight:bold;
       }
     }

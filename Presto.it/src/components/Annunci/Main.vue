@@ -1,10 +1,9 @@
 <template>
-  <main class="Main">
+  <main id="Main">
     <div id="bgP" class="row">
       <div class="col d-flex align-items-center justify-content-center">
-              <h1>Cerca tra i nostri <span>Annunci</span></h1>
+        <h1>Cerca tra i nostri <span>Annunci</span></h1>
       </div>
-
     </div>
     <div class="row justify-content-center">
       <div class="col-12 col-sm-11 col-md-10 col-lg-8">
@@ -35,7 +34,7 @@
             <option value="Arredamento">Arredamento</option>
           </select>
           <input
-            class="col-6 col-lg  mx-lg-3 my-3"
+            class="col-6 col-lg mx-lg-3 my-3"
             type="text"
             v-model="minimalCost"
             placeholder="Min"
@@ -93,13 +92,16 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-6 d-flex justify-content-center">
-        <ul class="d-flex" id="indice" >
+        <ul class="d-flex" id="indice"  v-if="index(elementList).length>1">
           <li
             v-for="pagina in index(elementList)"
             :key="pagina.id"
-            @click="page = pagina;scrollMeTo()"
+            @click="
+              page = pagina;
+              scrollMeTo();
+            "
           >
-            <span v-if="pagina!=page">{{ pagina }}</span>
+            <span v-if="pagina != page">{{ pagina }}</span>
             <span v-else id="focusIndex">{{ pagina }}</span>
           </li>
         </ul>
@@ -109,7 +111,7 @@
 </template>
 
 <script>
-import Card from "./Card.vue";
+import Card from "@/components/Global/Card.vue";
 export default {
   name: "Main",
   components: {
@@ -118,7 +120,7 @@ export default {
   data() {
     return {
       nameProduct: "",
-      categories: "All",
+      categories: this.$route.query.product,
       minimalCost: "",
       maximumCost: "",
       order: "AZ",
@@ -135,15 +137,15 @@ export default {
   },
   methods: {
     scrollMeTo() {
-    window.scrollTo(0, 500);
-  },
+      window.scrollTo(0, 500);
+    },
     index(listElement) {
-      this.indexPage=[];
+      this.indexPage = [];
       const numberPage = Math.ceil(listElement.length / 12);
       for (let i = 0; i < numberPage; i++) {
         this.indexPage.push(i);
       }
-      return this.indexPage
+      return this.indexPage;
     },
     ElementInPage(page) {
       this.listElementInPage = [];
@@ -163,7 +165,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.Main {
+#Main {
+  padding-bottom: 50px;
   #bgP {
     height: 400px;
     background-image: url(../../assets/section3.jpg);
@@ -171,17 +174,16 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: -50px;
-    h1{
+    h1 {
       color: white;
-      span{
-        color: rgb(0, 185, 142);
+      span {
+        color: var(--green);
       }
     }
-
   }
 
   #searchMenu {
-    background-color: rgb(0, 185, 142);
+    background-color: var(--green);
     padding: 25px 0;
     border-radius: 10px;
     * {
@@ -212,9 +214,9 @@ export default {
     }
   }
   #indice {
-    margin: 50px 0;
+    margin-top: 50px;
     border-radius: 30px;
-    background-color: rgb(0, 185, 142);
+    background-color: var(--green);
     padding: 10px 20px;
     span {
       border-radius: 50%;
@@ -227,10 +229,10 @@ export default {
       background-color: white;
       font-weight: 400;
     }
-    #focusIndex{
+    #focusIndex {
       background-color: black;
       color: white;
-      }
+    }
     span:hover {
       background-color: black;
       color: white;

@@ -71,7 +71,7 @@ export default {
 
   h5 {
     margin: 20px 0;
-    color: rgb(0, 185, 142);
+    color: var(--green);
   }
 
   a {

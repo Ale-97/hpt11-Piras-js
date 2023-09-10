@@ -1,5 +1,5 @@
 <template>
-  <div class="Section4 container-fluid">
+  <div id="Section4" class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-6">
         <h2>Gli ultimi <span>Annunci</span></h2>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Card from "../Annunci/Card.vue";
+import Card from "../Global/Card.vue";
 import Annunci from "../../annunci.json";
 export default {
   name: "Section4",

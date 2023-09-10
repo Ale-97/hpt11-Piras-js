@@ -1,5 +1,5 @@
 <template>
-  <div class="Section3 container-fluid">
+  <div id="Section3" class="container-fluid">
     <div class="row justify-content-center align-items-center">
       <div class="col-4 d-flex justify-content-center d-none d-sm-block">
         <div></div>
@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.Section3 {
+#Section3 {
   background-color:rgb(250, 250, 250);
   padding: 80px 0;
   .col-4:first-of-type {

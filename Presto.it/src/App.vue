@@ -19,6 +19,9 @@ export default {
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+:root {
+  --green: rgb(0, 185, 142);
+}
 *{
   font-family: 'Heebo', sans-serif;
 }
@@ -32,8 +35,5 @@ a {
   color: black;
   text-decoration: none;
 }
-.row{
-  margin: 0;
-  padding: 0;
-}
+
 </style>

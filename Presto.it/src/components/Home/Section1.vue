@@ -73,7 +73,7 @@ export default {
 h1 {
   font-size: 80px;
   span {
-    color: rgb(0, 185, 142);
+    color: var(--green);
   }
 }
 }

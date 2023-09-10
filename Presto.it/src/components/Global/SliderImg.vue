@@ -1,6 +1,8 @@
 <template>
   <div
-    class="sliderImg d-flex flex-column justify-content-center px-5" id="img">
+    class="d-flex flex-column justify-content-center px-5"
+    id="sliderImg"
+  >
     <span @click="left()"><i class="fas fa-chevron-left"></i></span>
     <span @click="right()"><i class="fas fa-chevron-right"></i></span>
   </div>
@@ -23,7 +25,9 @@ export default {
 
   methods: {
     default() {
-      document.getElementById("img").style.backgroundImage = `url(${this.ListImg[0]})`;
+      document.getElementById(
+        "sliderImg"
+      ).style.backgroundImage = `url(${this.ListImg[0]})`;
     },
     left() {
       if (this.index == 0) {
@@ -31,8 +35,7 @@ export default {
       } else {
         this.index--;
       }
-      console.log(this.ListImg[this.index]);
-      document.getElementById("img").style.backgroundImage = `url(${
+      document.getElementById("sliderImg").style.backgroundImage = `url(${
         this.ListImg[this.index]
       })`;
     },
@@ -43,7 +46,7 @@ export default {
         this.index++;
       }
       console.log(this.ListImg[this.index]);
-      document.getElementById("img").style.backgroundImage = `url(${
+      document.getElementById("sliderImg").style.backgroundImage = `url(${
         this.ListImg[this.index]
       })`;
     },
@@ -52,16 +55,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#img {
+#sliderImg {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 600px;
-  transition:ease 0.5s;
 
   i {
     padding: 23px;
-    background-color: rgb(0, 185, 142);
+    background-color: var(--green);
     border-radius: 50%;
     display: inline-block;
     margin: 10px;

@@ -28,12 +28,12 @@
           >
             <li class="nav-item">
               <router-link to="/" class="nav-link">
-                <span v-if="focus() != ''">Home</span>
+                <span v-if="focus() != 'Home'">Home</span>
                 <span v-else class="focus">Home</span>
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/Annunci" class="nav-link">
+              <router-link to="/Annunci?product=All" class="nav-link">
                 <span v-if="focus() != 'Annunci'">Annunci</span>
                 <span v-else class="focus">Annunci</span>
               </router-link>
@@ -51,42 +51,42 @@
               </router-link>
               <ul class="dropdown-menu">
                 <li>
-                  <router-link class="dropdown-item" to="/Annunci"
+                  <router-link class="dropdown-item" to="/Annunci?product=Elettronica"
                     >Elettronica
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/Annunci"
+                  <router-link class="dropdown-item" to="/Annunci?product=Motori"
                     >Motori
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/Annunci"
+                  <router-link class="dropdown-item" to="/Annunci?product=Sport"
                     >Sport
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/Annunci"
+                  <router-link class="dropdown-item" to="/Annunci?product=Immobili"
                     >Immobili
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/Annunci"
+                  <router-link class="dropdown-item" to="/Annunci?product=Abbigliamento"
                     >Abbigliamento
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/Annunci"
+                  <router-link class="dropdown-item" to="/Annunci?product=Giardinaggio"
                     >Giardinaggio
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/Annunci"
+                  <router-link class="dropdown-item" to="/Annunci?product=Musica"
                     >Musica
                   </router-link>
                 </li>
                 <li>
-                  <router-link class="dropdown-item" to="/Annunci"
+                  <router-link class="dropdown-item" to="/Annunci?product=Arredamento"
                     >Arredamento
                   </router-link>
                 </li>
@@ -118,8 +118,7 @@ export default {
   },
   methods: {
     focus() {
-      const currentPage = window.location.hash.split("/");
-      return currentPage[currentPage.length - 1];
+     return this.$route.name
     },
     navbar() {
       window.addEventListener("scroll", () => {
@@ -156,7 +155,7 @@ export default {
       margin-left: 5px;
     }
     .focus {
-      color: rgb(0, 185, 142);
+      color: var(--green);
       font-weight: 700;
     }
     .navbar-toggler {
@@ -167,7 +166,7 @@ export default {
         margin: 0 10px;
       }
       #rightButton {
-        background-color: rgb(0, 185, 142);
+        background-color: var(--green);
         padding: 4px 0;
         border-radius: 10px;
         text-align: center;

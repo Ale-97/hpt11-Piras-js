@@ -29,12 +29,12 @@ h2 {
   font-size: 50px;
   font-weight: 300;
   span {
-    color: rgb(0, 185, 142);
+    color: var(--green);
     font-weight: bold;
   }
 }
 button {
-  background-color: rgb(0, 185, 142);
+  background-color: var(--green);
   width: 250px;
   padding: 20px 0;
   border-radius: 10px;

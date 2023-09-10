@@ -1,5 +1,5 @@
 <template>
-  <div class="Section2 container">
+  <div id="Section2" class="container" >
     <div class="row justify-content-center">
       <div class="col-8">
         <h2>Le nostre <span>Categorie</span></h2>
@@ -109,7 +109,7 @@ export default {
     padding: 20px;
     border-radius: 10px;
     div:first-child {
-      border: 1px Dashed rgb(0, 185, 142);
+      border: 1px Dashed var(--green);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -120,13 +120,13 @@ export default {
         color: rgb(14, 46, 80);
       }
       div {
-        color: rgb(0, 185, 142);
+        color: var(--green);
       }
       i {
         padding: 10px;
-        color: rgb(0, 185, 142);
+        color: var(--green);
         border-radius: 50%;
-        border: 1px Dashed rgb(0, 185, 142);
+        border: 1px Dashed var(--green);
         padding: 20px;
         font-size: 20px;
         margin-bottom: 20px;
@@ -134,7 +134,7 @@ export default {
       }
     }
     div:first-child:hover {
-      background-color: rgb(0, 185, 142);
+      background-color: var(--green);
       h3,
       div {
         color: white;

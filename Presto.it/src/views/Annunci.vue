@@ -19,6 +19,9 @@ export default {
       elementList: annunci,
     };
   },
+  mounted(){
+    this.filterList("", this.$route.query.product,"","","AZ");
+  },
   methods: {
     orderList(order) {
       if (order == "priceDown") {
