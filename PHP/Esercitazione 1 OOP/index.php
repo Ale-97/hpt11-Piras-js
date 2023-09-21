@@ -57,13 +57,13 @@ class Company
     public function stampAnnualCost()
     {
         $this->annualCost = $this->tot_employees * self::$avg_wage;
-        echo "Il totale delle spese annuali di ". $this->name . " è di " .$this->annualCost . "\n";
+        echo "Il totale delle spese annuali di " . $this->name . " è di " . $this->annualCost . "\n";
     }
 
     public function stampTotalCostCompany()
     {
         self::$totalCostCompany += $this->annualCost;
-        echo "Il totale delle spese di tutte le aziende è ".self::$totalCostCompany . "\n\n";
+        echo "Il totale delle spese di tutte le aziende è " . self::$totalCostCompany . "\n\n";
     }
 };
 
@@ -81,13 +81,69 @@ $company5 = new Company("Levissima", "Australia", 200);
 Creare una classe Contatore con una proprietà statica valore e un metodo statico "azzera()" che reimposta il valore del contatore a 0.
 */
 
+class Contatore
+{
+    static $valore = 0;
+    public function __construct()
+    {
+        self::$valore++;
+        echo self::$valore . "\n";
+    }
+    static function azzera()
+    {
+        self::$valore = 0;
+        echo self::$valore . "\n";
+    }
+}
 
-
-
-
+$contatore = new Contatore;
+$contatore2 = new Contatore;
+$contatore3 = new Contatore;
+$contatore4 = new Contatore;
+Contatore::azzera();
 /*
 Traccia 3:
 
 Creare una classe "Matematica" con un metodo statico "moltiplica($numeri)" che restituisce il prodotto dei numeri passati come parametro.
 Ripetere per altre operazioni matematiche, salvare il risultato in un attributo “risultato” e creare un metodo che permette di stampare in console questo risultato
 */
+
+class Matematica
+{
+    static $result = 0;
+
+    static function stampResult()
+    {
+        echo  self::$result ."\n";
+    }
+
+    static function somma($a, $b)
+    {
+        self::$result= $a + $b;
+        self::stampResult();
+    }
+    static function sottrai($a, $b)
+    {
+        self::$result =$a - $b;
+        self::stampResult();
+    }
+    static function moltiplica($a, $b)
+    {
+         self::$result= $a * $b;
+         self::stampResult();
+    }
+    static function dividi($a, $b)
+    {
+         self::$result= $a / $b;
+         self::stampResult();
+    }
+
+ 
+}
+
+
+
+$somma = Matematica::somma(5,7);
+$somma = Matematica::sottrai(5,7);
+$somma = Matematica::moltiplica(5,7);
+$somma = Matematica::dividi(5,7);
