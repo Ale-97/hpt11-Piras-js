@@ -2,92 +2,357 @@
 
 /*
 Traccia 1:
-Crea una classe Company che abbia i seguenti attributi pubblici:
+Utilizza i principi di OOP ed Ereditarieta' per creare una struttura a classi come la seguente:
 
--  name: nome dell’azienda; 
--  location: stato in cui e' ubicata la sede dell’azienda;
--   tot_employees: numero di dipedenti assunti in quella sede (di default, 0);
+    +-|Continent 
+    +-----------|Country 
+    +--------------------|Region 
+    +---------------------------|Province 
+    +------------------------------------|City 
+    +------------------------------------------|Street
 
-Crea 5 istanze di 5 aziende diverse
-Crea un metodo che permetta di stampare a terminale la seguente frase: “L’ufficio Aulab con sede in Italia ha ben 50 dipendenti“; se la sede non ha dipendendi, allora stampa: “L’ufficio Aulab con sede in Italia non ha dipendenti“;
+Ogni classe avra' un attributo public del tipo:
 
-Definisci un attributo statico avg_wage, con valore 1500
+    $nameContinent;
+    $nameCountry; 
+    $nameRegion; 
+    $nameProvince; 
+    $nameCity; 
+    $nameStreet;
+
+La prima classe genitore avra' la seguente struttura:
+
+    class Continent {
+      public $nameContinent; 
+      public function __construct($continent) 
+      { 
+      $this->nameContinent = $continent; 
+      } 
+    }
+
+Istanzia un nuovo oggetto $myLocation, per poi richiamare un metodo chiamato getMyCurrentLocation() che stampi a schermo la seguente frase: ad es. “Mi trovo in Europa, Italia, Puglia, Bari, Strada San Giorgio Martire 2D“
+*/
+
+class Continent
+{
+    public $nameContinent;
+    public function __construct($continent)
+    {
+        $this->nameContinent = $continent;
+    }
+};
 
 
-- Implementa un nuovo metodo che, per ogni oggetto Company istanziato, calcoli la spesa annuale e la stampi per ogni oggetto. 
-- Implementa un nuovo metodo che e' in grado di calcolare di volta in volta tutti i totali, in relazione alle varie aziende create.
--  Implementa un metodo statico che permetta di stampare a terminale il totale assoluto di tutte le aziende messe insieme.
+class Country extends Continent
+{
+    public $nameCountry;
+    public function __construct($continent, $Country)
+    {
+        parent::__construct($continent);
+        $this->nameCountry = $Country;
+    }
+};
+class Region extends Country
+{
+    public $nameRegion;
+    public function __construct($continent, $Country, $region)
+    {
+        parent::__construct($continent, $Country);
+        $this->nameRegion = $region;
+    }
+};
+class Province extends Region
+{
+    public $nameProvince;
+    public function __construct($continent, $Country, $region, $province)
+    {
+        parent::__construct($continent, $Country, $region);
+        $this->nameProvince = $province;
+    }
+};
+class City extends Province
+{
+    public $nameCity;
+    public function __construct($continent, $Country, $region, $province, $city)
+    {
+        parent::__construct($continent, $Country, $region, $province);
+        $this->nameCity = $city;
+    }
+};
+class Street extends City
+{
+    public $nameStreet;
+    public function __construct($continent, $Country, $region, $province, $city, $street)
+    {
+        parent::__construct($continent, $Country, $region, $province, $city);
+        $this->nameStreet = $street;
+    }
+};
 
+
+class MyLocation extends Street
+{
+    public function __construct($continent, $Country, $region, $province, $city, $street)
+    {
+        parent::__construct($continent, $Country, $region, $province, $city, $street);
+    }
+    public function getMyCurrentLocation()
+    {
+        echo "Mi trovo in " . $this->nameContinent . ", " . $this->nameCountry . ", " . $this->nameRegion . ", " . $this->nameCity . ", " . $this->nameStreet . "\n";
+    }
+};
+
+
+$myLocation = new MyLocation("Europa", "Italia", "Puglia", "Bari", "Bari", "Strada San Giorgio Martire 2D");
+
+$myLocation->getMyCurrentLocation();
+/*
+
+Traccia 2:
+Partendo dal seguente schema:
+
+![](https://paper-attachments.dropboxusercontent.com/s_0D5105C8A52D0026CA02900269577451EB2D4F5B5A26AFA1147F1CF62538DC7A_1695312900543_image.png)
+
+
+crea una struttura a classi sfruttando l’ereditarieta' e seguendo queste regole:
+
+-  le classi non devono avere attributi; 
+-  ogni classe avra' un metodo specifico protected per stampare la sua specializzazione;
+-   non puoi realizzare metodi definiti public per stampare il risultato; 
+-   l’unico metodo public ammesso e' il costrutture.
+
+Visualizzare a terminale le caratteristiche di diversi animali, es:
+
+
+    $magikarp = new Fish();
+    //Nel terminale visaulizzerete: 
+    Sono un animale Vertebrato 
+    Sono un animale a Sangue Freddo 
+    Splash!
+
+Utilizzare tratti per aggiungere caratteristiche comuni a più specie presenti in rami diversi, ad es. uccelli e rettili sono ovipari, anfibi e pesci respirano sott’acqua
 */
 
 
-class Company
+
+class Vertebrates
 {
 
-    public $name;
-    public $location;
-    public $tot_employees = 0;
-    public $annualCost;
 
-    static $avg_wage = 1500;
-
-    static $totalCostCompany = 0;
-
-    public function __construct($name, $location, $tot_employees)
+    public function __construct()
     {
-
-        $this->name = $name;
-        $this->location = $location;
-        $this->tot_employees = $tot_employees;
-        $this->echoEmployees();
-        $this->stampAnnualCost();
-        $this->stampTotalCostCompany();
+        $this->textVertebrates();
     }
-
-    public function echoEmployees()
+    protected function textVertebrates()
     {
-        if ($this->tot_employees > 0) {
-
-            echo "L’ufficio " . $this->name . " con sede in " . $this->location . " ha ben " . $this->tot_employees . " dipendenti\n";
-        } else {
-            echo "L’ufficio " . $this->name . " con sede in " . $this->location . " non ha dipendenti\n";
-        }
+        echo "\nSono un animale Vertebrato\n";
     }
+};
 
-    public function stampAnnualCost()
-    {
-        $this->annualCost = $this->tot_employees * self::$avg_wage;
-        echo "Il totale delle spese annuali di ". $this->name . " è di " .$this->annualCost . "\n";
+trait Ovipari{
+    public function StampOvipari(){
+        echo "Sono un animale Oviparo\n";
     }
+}
 
-    public function stampTotalCostCompany()
+trait Branchie{
+    public function StampBranchie(){
+        echo "Sono un animale che respira sott'acqua\n";
+    }
+}
+//------------------------------------------------
+class WarmBlooded extends Vertebrates
+{
+
+    public function __construct()
     {
-        self::$totalCostCompany += $this->annualCost;
-        echo "Il totale delle spese di tutte le aziende è ".self::$totalCostCompany . "\n\n";
+        parent::__construct();
+        $this->textWarmBlooded();
+    }
+    protected function textWarmBlooded()
+    {
+        echo "Sono un animale a Sangue Caldo\n";
+    }
+};
+
+class Mammals extends WarmBlooded
+{
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->textMammals();
+    }
+    protected function textMammals()
+    {
+        echo "Sono un Mammifero\n";
+    }
+};
+
+class Birds extends WarmBlooded
+{
+
+    use Ovipari;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->StampOvipari();
+        $this->textBirds();
+    }
+    protected function textBirds()
+    {
+        echo "Sono un Uccello\n";
+    }
+};
+
+
+//----------------------------------------------
+class ColdBlooded extends Vertebrates
+{
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->textColdBlooded();
+    }
+    protected function textColdBlooded()
+    {
+        echo "Sono un animale a Sangue Freddo\n";
+    }
+};
+
+class Fish extends ColdBlooded
+{
+use Branchie;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->StampBranchie();
+        $this->textFish();
+    }
+    protected function textFish()
+    {
+        echo "Splash!\n";
+    }
+};
+class Reptiles extends ColdBlooded
+{
+    
+    use Ovipari;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->StampOvipari();
+        $this->textReptiles();
+    }
+    protected function textReptiles()
+    {
+        echo "Sono un Rettile\n";
+    }
+};
+class Amphibians extends ColdBlooded
+{
+    use Branchie;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->StampBranchie();
+        $this->textAmphibians();
+    }
+    protected function textAmphibians()
+    {
+        echo "Sono un Anfibio\n";
     }
 };
 
 
 
-$company = new Company("Gruppomega", "Italia", 200);
-$company1 = new Company("Aulab", "Italia", 50);
-$company2 = new Company("Cosatec", "America", 1000);
-$company3 = new Company("Bardys", "America", 0);
-$company4 = new Company("Barilla", "Albania", 200);
-$company5 = new Company("Levissima", "Australia", 200);
-
-/*Traccia 2: (ripasso proprietà statiche)
-
-Creare una classe Contatore con una proprietà statica valore e un metodo statico "azzera()" che reimposta il valore del contatore a 0.
-*/
-
-
-
-
+$magikarp = new Mammals();
+$magikarp = new Birds();
+$magikarp = new Fish();
+$magikarp = new Reptiles();
+$magikarp = new Amphibians();
 
 /*
 Traccia 3:
+Dato il seguente codice di partenza:
 
-Creare una classe "Matematica" con un metodo statico "moltiplica($numeri)" che restituisce il prodotto dei numeri passati come parametro.
-Ripetere per altre operazioni matematiche, salvare il risultato in un attributo “risultato” e creare un metodo che permette di stampare in console questo risultato
+    class Car { 
+      private $num_telaio; 
+    } 
+    class Fiat extends Car { 
+      protected $license; 
+      protected $color; 
+    }
+
+Completa la classe Fiat con le strutture mancanti e, utilizzando il livello di severita' (private,public,protected) che ritieni piu' opportuno,
+ estendi i metodi per stampare a terminale la seguente frase: "La mia macchina e' Opel, con targa ND 123 OJ e numero di Telaio 1234".
 */
+
+class Car
+{
+    private $num_telaio;
+    private $targa;
+    protected function setTarga($value)
+    {
+        $this->targa = $value;
+    }
+    protected function setnumTelaio($value)
+    {
+        $this->num_telaio = $value;
+    }
+    protected function getTarga()
+    {
+        return $this->targa;
+    }
+    protected function getnumTelaio()
+    {
+        return $this->num_telaio;
+    }
+}
+
+class Fiat extends Car
+{
+    protected $license;
+    protected $color;
+    public $model = "Fiat";
+
+    public function __construct($num_telaio, $targa, $license, $color)
+    {
+        $this->setTarga($targa);
+        $this->setnumTelaio($num_telaio);
+        $this->license = $license;
+        $this->color = $color;
+    }
+    public function stamp()
+    {
+        echo "La mia macchina e' " . $this->model . ", con targa " . $this->getTarga() . " e numero di Telaio " . $this->getnumTelaio() . "\n";
+    }
+}
+
+class Opel extends Car
+{
+    protected $license;
+    protected $color;
+    public $model = "Opel";
+
+    public function __construct($num_telaio, $targa, $license, $color)
+    {
+        $this->setTarga($targa);
+        $this->setnumTelaio($num_telaio);
+        $this->license = $license;
+        $this->color = $color;
+    }
+    public function stamp()
+    {
+        echo "La mia macchina e' " . $this->model . ", con targa " . $this->getTarga() . " e numero di Telaio " . $this->getnumTelaio() . "\n";
+    }
+}
+
+
+$fiat= new Fiat("1234","ND 123 OJ","di uccidere","rosso");
+
+$fiat->stamp();
