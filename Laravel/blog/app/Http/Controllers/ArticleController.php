@@ -66,6 +66,6 @@ class ArticleController extends Controller
         $article->body = "...";
         $article->save();
 
-        return route('createArticle');
+        return $this->viwArticles();
     }
 }
