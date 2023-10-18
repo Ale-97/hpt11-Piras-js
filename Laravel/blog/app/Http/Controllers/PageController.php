@@ -13,11 +13,6 @@ class PageController extends Controller
         return view('home', compact('title'));
     }
 
-    public function contacts()
-    {
-        return view('pages.contacts');
-    }
-
     public function whoIAm()
     {
         $description="questa è una breve descrizione";
