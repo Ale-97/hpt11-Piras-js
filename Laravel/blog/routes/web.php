@@ -20,3 +20,5 @@ Route::get('/anime/generi/{id}', [App\Http\Controllers\AnimeController::class, '
 Route::get('/anime/view/{id}/{category_id?}', [App\Http\Controllers\AnimeController::class, 'anime'])->name('anime.anime');
 
 Route::get('/insert-data', [App\Http\Controllers\ArticleController::class, 'insertData'])->name('createArticle');
+Route::get('/account/articoli/crea', [App\Http\Controllers\ArticleController::class, 'create'])->name('account.articles.create');
+Route::post('/account/articoli/crea', [App\Http\Controllers\ArticleController::class, 'store'])->name('account.articles.store');

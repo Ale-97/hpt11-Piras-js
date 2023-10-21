@@ -1,5 +1,6 @@
 <x-layout-main>
-    <a href="{{ route('createArticle')}}">
+    <!-- <a href="{{ route('createArticle')}}"> -->
+        <a href="{{ route('account.articles.create')}}">
         <button>
             add article
         </button>

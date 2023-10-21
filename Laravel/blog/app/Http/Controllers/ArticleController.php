@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreArticleRequest;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use App\Models\Article;
@@ -67,5 +68,31 @@ class ArticleController extends Controller
         $article->save();
 
         return $this->viwArticles();
+    }
+
+
+
+
+    public function create()
+    {
+        return view('pages.articleCreate');
+    }
+
+
+    public function store(StoreArticleRequest $request) // la "Request $request" ci permette di prendere tutti i valori del form
+    {
+        $article = Article::create($request->all()); //popolo "$article" con un nuovo record per la mia tabella article,sarà popolata con i valori del mio form "$request->all()"
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+
+            $fileName = \Illuminate\Support\Str::slug($article->title) . '.' . $request->file('image')->extension();
+
+            $imagePath = $request->file('image')->storeAs("public/articles/$article->id", $fileName);
+
+            $article->image = $imagePath;
+
+            $article->save(); // mi permeytte di salavre il mio record nel database
+        }
+        return redirect()->back()->with(['success' => 'Articolo inserito correttamente']);
     }
 }
