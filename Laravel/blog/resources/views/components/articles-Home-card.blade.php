@@ -6,10 +6,16 @@
     <div class="col-8">
         <div class="d-flex align-items-baseline">
             <h3>{{ $article->title }}</h3>
-            <span class="mx-2">{{$article->category->name}}</span>
+            @if(!is_null($article->categories))
+            @foreach($article->categories as $category)
+            <span class="mx-2">{{$category->name}}</span>
+            @endforeach
+            @endif
         </div>
         <p>{{$article->body}}</p>
+        @if(!is_null($article->categories))
         <span>{{$article->user->name}}</span>
+        @endif
         <span>{{$article->created_at}}</span>
     </div>
 </div> 

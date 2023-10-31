@@ -2,7 +2,11 @@
 
     <h1>{{ $article['title'] }}</h1>
 
-    <h2>{{ $article->category->name}}</h2>
+    @if(!is_null($article->categories))
+            @foreach($article->categories as $category)
+            <span class="mx-2">{{$category->name}}</span>
+            @endforeach
+            @endif
     <p>
         {{$article['description']}}
     </p>
