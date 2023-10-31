@@ -68,6 +68,7 @@ class CategoryController extends Controller
     public function update(StoreCategoryRequest $request, Category $category)
     {
         $category->update($request->all());
+
         return redirect()->route('categories.create')->with(['success' => 'Categoria modificata con successo']);
     }
 
