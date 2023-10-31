@@ -3,85 +3,42 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreArticleRequest;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
 use App\Models\Article;
-
-use function Laravel\Prompts\alert;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-
-
-
-    public function viwArticles()
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
         $title = 'Articoli';
         $articles = Article::all();
 
 
-        return view('pages.articles', compact('title', 'articles'));
+        return view('account.articoli.articles', compact('title', 'articles'));
     }
 
-    public function viwArticle($id)
-    {
-
-        return view('pages.article', ['article' => Article::findOrFail($id)]);
-    }
-
-    public function insertData()
-    {
-        /* Primo metodo inserimento a database */
-        /*Article::create([
-            'title' => 'Titolo #1',
-            'category' => 'Economia',
-            'description' => 'Articolo di economia',
-            'visible' => true,
-            'body' => '...',
-        ]);
-    
-        Article::create([
-            'title' => 'Titolo #2',
-            'category' => 'Esteri',
-            'description' => 'Articolo di esteri',
-            'visible' => true,
-            'body' => '...',
-        ]);
-    
-        Article::create([
-            'title' => 'Titolo #3',
-            'category' => 'Politica',
-            'description' => 'Articolo di politica',
-            'visible' => true,
-            'body' => '...',
-        ]);*/
-
-
-        /* Secondo metodo inserimento record a database */
-        $a = Article::all();
-        $lastIdElement = $a[count($a) - 1]['id'];
-        $article = new Article();
-        $article->title = "Titolo " . $lastIdElement + 1;
-        $article->category = "Sport";
-        $article->description = "Articolo di sport";
-        $article->body = "...";
-        $article->save();
-
-        return $this->viwArticles();
-    }
-
-
-
-
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        return view('pages.articleCreate');
+        $title = 'Crea';
+        $article = "";
+        $categories = \App\Models\Category::all();
+        return view('account.articoli.articleEdit', compact('title', 'article', 'categories'));
     }
 
-
-    public function store(StoreArticleRequest $request) // la "Request $request" ci permette di prendere tutti i valori del form
-    {
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(StoreArticleRequest $request)
+    {    
+        
         $article = Article::create($request->all()); //popolo "$article" con un nuovo record per la mia tabella article,sarà popolata con i valori del mio form "$request->all()"
+        $article->user_id = auth()->user()->id;
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
 
@@ -90,9 +47,48 @@ class ArticleController extends Controller
             $imagePath = $request->file('image')->storeAs("public/articles/$article->id", $fileName);
 
             $article->image = $imagePath;
-
-            $article->save(); // mi permeytte di salavre il mio record nel database
         }
+
+        $article->save();//mi permette di Salvare il mio record nel database
+
         return redirect()->back()->with(['success' => 'Articolo inserito correttamente']);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Article $article)
+    {
+        return view('account.articoli.article', ['article' => $article]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Article $article)
+    {
+        $title = 'Modifica';
+        $categories = \App\Models\Category::all();
+        return view('pages.articleCreateModify', compact('title', 'article', 'categories'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(StoreArticleRequest $request, Article $article)
+    {
+        $article->update($request->all());
+        return redirect()->route('articles.edit', $article->id)->with(['success' => 'Categoria modificata con successo']);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Article $article)
+    {
+
+        $article->delete();
+
+        return redirect()->back()->with(['success' => 'Articolo eliminato']);
     }
 }

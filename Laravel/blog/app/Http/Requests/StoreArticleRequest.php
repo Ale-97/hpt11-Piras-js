@@ -23,7 +23,7 @@ class StoreArticleRequest extends FormRequest
     {
         return [
             'title' => 'required|max:50',
-            'category' => 'required|max:40',
+            'category_id' => 'required',
             'description' => 'required|max:250',
             'body' => 'required|max:5000',
         ];
@@ -38,6 +38,7 @@ class StoreArticleRequest extends FormRequest
             'category.max' => 'Il campo Categoria non può essere più lungo di :max caratteri',
             'body.required' => "Il campo Corpo dell articolo non può essere vuoto.",
             'body.max' => 'Il campo Categoria non può essere più lungo di :max caratteri',
+            'category_id.required' => 'Il campo Categoria non può essere vuoto.',
         ];
     }
 }

@@ -5,9 +5,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\PageController::class, 'home'])->name('home');
 
-Route::get('/articoli', [App\Http\Controllers\ArticleController::class, 'viwArticles'])->name('articles');
+Route::middleware('auth')->group(function () {
+    Route::resource('articles', \App\Http\Controllers\ArticleController::class);
+    Route::get('account/ResetPassword', [App\Http\Controllers\AccountController::class, 'viewUpdatePassword'])->name('updatePassword');
+    Route::post('account/ResetPassword', [App\Http\Controllers\AccountController::class, 'updatePassword'])->name('updatePassword.store');
+    Route::resource('categories', \App\Http\Controllers\CategoryController::class);
 
-Route::get('/articolo/{id}', [App\Http\Controllers\ArticleController::class, 'viwArticle'])->name('article');
+});
+
 
 Route::get('/contatti', [App\Http\Controllers\ContactController::class, 'form'])->name('contacts');
 
@@ -19,6 +24,7 @@ Route::get('/anime/generi', [App\Http\Controllers\AnimeController::class, 'genre
 Route::get('/anime/generi/{id}', [App\Http\Controllers\AnimeController::class, 'genre'])->name('anime.genre');
 Route::get('/anime/view/{id}/{category_id?}', [App\Http\Controllers\AnimeController::class, 'anime'])->name('anime.anime');
 
-Route::get('/insert-data', [App\Http\Controllers\ArticleController::class, 'insertData'])->name('createArticle');
-Route::get('/account/articoli/crea', [App\Http\Controllers\ArticleController::class, 'create'])->name('account.articles.create');
-Route::post('/account/articoli/crea', [App\Http\Controllers\ArticleController::class, 'store'])->name('account.articles.store');
+
+
+
+Route::get('account', [App\Http\Controllers\AccountController::class, 'index'])->name('account');
