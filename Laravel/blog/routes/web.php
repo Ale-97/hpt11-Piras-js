@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Livewire\Counter;
 
 Route::get('/', [App\Http\Controllers\PageController::class, 'home'])->name('home');
 
@@ -28,3 +28,6 @@ Route::get('/anime/view/{id}/{category_id?}', [App\Http\Controllers\AnimeControl
 
 
 Route::get('account', [App\Http\Controllers\AccountController::class, 'index'])->name('account');
+Route::get('/users', [App\Http\Controllers\userController::class, 'index']);
+
+Route::get('/counter', Counter::class);
